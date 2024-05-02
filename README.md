@@ -1,4 +1,4 @@
-![Progress Bar Gif](./assets/progress-bars.gif)
+![Progress Bar Gif](./assets/initial.gif)
 
 # Easy CLI for PHP
 A simple and easy to use library with no dependencies for creating pretty and organized CLI apps in PHP.
@@ -59,7 +59,7 @@ Andrey Postal - <andreypostal@gmail.com> <br />
 
 ### License
 
-CLI is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+CLI is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
 
 ### Acknowledgements
 

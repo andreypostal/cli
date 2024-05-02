@@ -4,7 +4,7 @@
     "keywords": ["console", "cli", "command-line", "terminal"],
     "homepage": "https://github.com/andreypostal/cli",
     "type": "library",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "autoload": {
         "psr-4": {
             "Andrey\\Cli\\": "src/",
