@@ -1,0 +1,47 @@
+<?php
+namespace Andrey\Cli\Examples\BooleanFlag;
+
+use Exception;
+use InvalidArgumentException;
+
+use Andrey\Cli\Types\Command;
+use Andrey\Cli\Types\Param;
+
+use Andrey\Cli\App;
+
+
+use Andrey\Cli\Types\ConsoleLevel;
+
+require './../../vendor/autoload.php';
+
+try {
+    $app = new App(
+        appName: 'MyApp',
+        description: 'My app has a cool description',
+        cmd: 'php cmd',
+        params: [
+            new Param(
+                key: 'watch',
+                flag: 'w',
+                helpText: 'This is just a global watch argument',
+                isBool: true,
+            ),
+        ],
+        commands: [
+            new Command(
+                key: 'run',
+                description: 'This action will run soon',
+                service: [
+                    'instance' => Service::class,
+                    'entrypoint' => 'process',
+                ],
+            ),
+        ],
+    );
+    $app->run($argv);
+} catch (InvalidArgumentException $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+} catch (Exception $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+    App::console(print_r($e, true), ConsoleLevel::ERROR);
+}

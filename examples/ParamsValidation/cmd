@@ -1,0 +1,54 @@
+<?php
+namespace Andrey\Cli\Examples\ParamsValidation;
+
+use Exception;
+use InvalidArgumentException;
+
+use Andrey\Cli\Types\Command;
+use Andrey\Cli\Types\Param;
+
+use Andrey\Cli\App;
+
+
+use Andrey\Cli\Types\ConsoleLevel;
+
+require './../../vendor/autoload.php';
+
+try {
+    $app = new App(
+        appName: 'MyApp',
+        description: 'My app has a cool description',
+        cmd: 'php cmd',
+        params: [
+            new Param(
+                key: 'required',
+                flag: 'r',
+                required: true,
+                helpText: 'This parameter must exist!!!'
+            ),
+        ],
+        commands: [
+            new Command(
+                key: 'run',
+                description: 'This action will run soon',
+                service: [
+                    'instance' => Service::class,
+                    'entrypoint' => 'process',
+                ],
+                params: [
+                    new Param(
+                        key: 'optional',
+                        flag: 'o',
+                        helpText: 'Are we there yet?'
+                    ),
+                ]
+            ),
+        ],
+    );
+    $app->run($argv);
+} catch (InvalidArgumentException $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+} catch (Exception $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+    App::console(print_r($e, true), ConsoleLevel::ERROR);
+}

@@ -1,0 +1,22 @@
+<?php
+namespace Andrey\Cli\Examples\Complete;
+
+use Exception;
+use InvalidArgumentException;
+
+use Andrey\Cli\App;
+
+
+use Andrey\Cli\Types\ConsoleLevel;
+
+require './../../vendor/autoload.php';
+
+try {
+    $app = new MyCommand();
+    $app->run($argv);
+} catch (InvalidArgumentException $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+} catch (Exception $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+    App::console(print_r($e, true), ConsoleLevel::ERROR);
+}

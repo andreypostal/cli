@@ -1,0 +1,41 @@
+<?php
+namespace Andrey\Cli\Examples\BasicHandler;
+
+use Exception;
+use InvalidArgumentException;
+
+use Andrey\Cli\Types\Command;
+use Andrey\Cli\Types\Context;
+
+use Andrey\Cli\App;
+
+
+use Andrey\Cli\Types\ConsoleLevel;
+
+require './../../vendor/autoload.php';
+
+try {
+    $app = new App(
+        appName: 'MyApp',
+        description: 'My app has a cool description',
+        cmd: 'php cmd',
+        params: [],
+        commands: [
+            new Command(
+                key: 'run',
+                description: 'This action will run soon',
+                service: [
+                    'handler' => static function(Context $context): void {
+                        App::console('It is so easy!!!');
+                    },
+                ],
+            ),
+        ],
+    );
+    $app->run($argv);
+} catch (InvalidArgumentException $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+} catch (Exception $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+    App::console(print_r($e, true), ConsoleLevel::ERROR);
+}

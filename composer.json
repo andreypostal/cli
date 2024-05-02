@@ -1,0 +1,23 @@
+{
+    "name": "andreypostal/cli",
+    "description": "A simple and easy to use library with no dependencies for creating pretty and organized CLI apps in PHP. Even has some fun progress bars.",
+    "keywords": ["console", "cli", "command-line", "terminal"],
+    "homepage": "https://github.com/andreypostal/cli",
+    "type": "library",
+    "license": "Apache 2.0",
+    "autoload": {
+        "psr-4": {
+            "Andrey\\Cli\\": "src/",
+            "Andrey\\Cli\\Examples\\": "examples/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrey Postal",
+            "email": "andreypostal@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    }
+}

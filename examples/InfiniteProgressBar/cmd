@@ -1,0 +1,39 @@
+<?php
+namespace Andrey\Cli\Examples\InfiniteProgressBar;
+
+use Exception;
+use InvalidArgumentException;
+
+use Andrey\Cli\Types\Command;
+
+use Andrey\Cli\App;
+
+
+use Andrey\Cli\Types\ConsoleLevel;
+
+require './../../vendor/autoload.php';
+
+try {
+    $app = new App(
+        appName: 'MyApp',
+        description: 'My app has a cool description',
+        cmd: 'php cmd',
+        params: [],
+        commands: [
+            new Command(
+                key: 'show',
+                description: 'Show me the progress bar please',
+                service: [
+                    'instance' => Service::class,
+                    'entrypoint' => 'process',
+                ],
+            ),
+        ],
+    );
+    $app->run($argv);
+} catch (InvalidArgumentException $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+} catch (Exception $e) {
+    App::console($e->getMessage(), ConsoleLevel::ERROR);
+    App::console(print_r($e, true), ConsoleLevel::ERROR);
+}
