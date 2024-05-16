@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/10ca7570bfd7cb04a7d1/maintainability)](https://codeclimate.com/github/andreypostal/cli/maintainability)
+
 ![Progress Bar Gif](./assets/initial.gif)
 
 # 🧙‍♂️ Easy CLI for PHP
