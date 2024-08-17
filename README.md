@@ -7,7 +7,6 @@ A simple and easy to use library with no dependencies for creating pretty and or
 
 No dependencies, simple and easy to understand. You can create simple CLI tools or complex one and things wont get messy!! 😄
 
-Probably I should have thought of a name for it.
 
 ## Installation
 
